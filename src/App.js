@@ -18,6 +18,28 @@ class Clock extends Component {
     //before the child class can initialize its own state and props.
     this.state = {date: new Date()};
   }
+//these arre called lifecycle methods
+//use to g
+//The componentDidMount() method runs after the component output has been rendered to the DOM. 
+//This is a good place to set up a timer:
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({//is a method used in React to update the state of a component. 
+      //It is available in class-based components that extend the Component class and is used to update 
+      //the state object of the component.
+      date: new Date()
+    });
+  }
   render() {
     return (
       <div>
@@ -27,6 +49,6 @@ class Clock extends Component {
     );
   }
 }
-
+//this component displays a clock that updates itself every second to show the current time.
 
 export default Clock;
